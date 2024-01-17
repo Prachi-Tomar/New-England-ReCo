@@ -1,5 +1,4 @@
 import React from "react";
-import { Box } from '@mui/system/Box';
 
 function HomePage() {
     return (<><h1>The New England Real Estate Company</h1>

@@ -1,0 +1,15 @@
+.homePage {
+    text-align: center;
+}
+
+.banner {
+    background-color: #100202;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.imageGallery img {
+    margin: 10px;
+    width: auto; /* Adjust as needed */
+    height: 150px; /* Adjust as needed */
+}
