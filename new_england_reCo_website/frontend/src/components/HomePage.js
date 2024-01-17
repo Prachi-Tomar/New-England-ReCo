@@ -1,18 +1,12 @@
-import React, { Component } from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  Redirect,
-} from "react-router-dom";
+import React from "react";
+import { Box } from '@mui/system/Box';
 
-export default class HomePage extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    return <h1>The New England Real Estate Company</h1>
-  }
+function HomePage() {
+    return (<><h1>The New England Real Estate Company</h1>
+    <img
+      component="img"
+      alt="The house from the offer."
+      src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&w=350&dpr=2" /></>)
 }
+
+export default HomePage;
