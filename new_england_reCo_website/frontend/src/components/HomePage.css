@@ -1,10 +1,10 @@
 .homePage {
-    text-align: center;
 }
 
 .banner {
-    background-color: #100202;
+    background-color: #005030;
     padding: 20px;
+    height: 150px;
     margin-bottom: 20px;
 }
 
