@@ -27,7 +27,7 @@ const StyledImage = styled.img`
   height: 50%;
   object-fit: cover;
   border-radius: 10px;
-  animation: ${props => props.fadeIn ? fadeIn : fadeOut} 1s linear;
+  animation: ${props => props.fadeIn ? fadeIn : fadeOut} 2s linear;
   display: ${props => props.show ? 'block' : 'none'};
 `;
 
@@ -35,40 +35,34 @@ function ImageGallery() {
   const images = [droneShot, house, IMG_0128, IMG_0408, kettle, MainStRockport1, MainStRockport2, 
     MedomakTerrace1, MedomakTerrace2, 
     MedomakTerrace3, MedomakTerrace4]; // Array of imported images
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [fadeIn, setFadeIn] = useState(true);
-
-  useEffect(() => {
-    // Set a timeout for the fade-out animation
-    const fadeOutTimeout = setTimeout(() => {
-      setFadeIn(false);
-    }, 4000); // Duration before fade out starts
-
-    // Set another timeout to change the image after the fade-out animation completes
-    const changeImageTimeout = setTimeout(() => {
-      setCurrentIndex((currentIndex + 1) % images.length);
-      setFadeIn(true);
-    }, 6000); // Duration before next image starts fading in
-
-    return () => {
-      clearTimeout(fadeOutTimeout);
-      clearTimeout(changeImageTimeout);
-    };
-  }, [currentIndex, images.length]);
-
-  return (
-    <div className='ImageGallery'>
-      {images.map((img, index) => (
-        <StyledImage
-          key={index}
-          src={img}
-          alt={`Image ${index + 1}`}
-          show={index === currentIndex}
-          fadeIn={fadeIn}
-        />
-      ))}
-    </div>
-  );
-}
-
-export default ImageGallery;
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const [fadeIn, setFadeIn] = useState(true);
+  
+    useEffect(() => {
+      const timeoutId = setTimeout(() => {
+        setFadeIn(false);
+        setTimeout(() => {
+          setCurrentIndex((currentIndex + 1) % images.length);
+          setFadeIn(true);
+        }, 2000);
+      }, 4000);
+  
+      return () => clearTimeout(timeoutId);
+    }, [currentIndex, images.length]);
+  
+    return (
+      <div>
+        {images.map((img, index) => (
+          <StyledImage
+            key={index}
+            src={img}
+            alt={`Image ${index + 1}`}
+            show={index === currentIndex}
+            fadeIn={fadeIn}
+          />
+        ))}
+      </div>
+    );
+  }
+  
+  export default ImageGallery;
